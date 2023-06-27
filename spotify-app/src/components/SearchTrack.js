@@ -29,14 +29,14 @@ const SearchTrack = () => {
         })
 
         setTracks(data.tracks.items)
-        console.log(data);
+        //console.log(data);
     }
 
     const renderTracks = () => {
 
         const trackElements = tracks.map((track) => {
 
-            return <DisplayTracks track={track} chooseTrack={chooseTrack}/>
+            return <DisplayTracks key={track.id} track={track} chooseTrack={chooseTrack}/>
             })
 
         return (<div>
@@ -48,9 +48,11 @@ const SearchTrack = () => {
     const chooseTrack = (track) => {
         setPlayingTrack(track)
         setSearchKey("");
+        //console.log(track);
     }
 
-    console.log(playingTrack);
+    //console.log("token", token);
+
   return (
     <div>
 
@@ -61,7 +63,9 @@ const SearchTrack = () => {
 
         {tracks.length > 0 && renderTracks()}
 
-        <div className='player'><Player trackUri={playingTrack?.uri}/></div>
+        <div className='player'>
+            <Player trackUri={playingTrack?.uri}/>
+        </div>
 
     </div>
   )
