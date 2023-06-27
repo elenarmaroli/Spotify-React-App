@@ -66,7 +66,6 @@ const SearchTrack = () => {
         {playingTrack &&
         <Player id={playingTrack?.id}/>}
 
-
     </div>
   )
 }
