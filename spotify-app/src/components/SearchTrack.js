@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import SpotifyAppContext from '../context/SpotifyAppContext';
 import { useContext } from 'react';
 import axios from 'axios';
+import Player from './Player';
+import DisplayTracks from './DisplayTracks';
 
 
 const SearchTrack = () => {
@@ -9,6 +11,9 @@ const SearchTrack = () => {
     const {token, searchKey, setSearchKey} = useContext(SpotifyAppContext);
 
     const [tracks, setTracks] = useState([]);
+
+    const [playingTrack, setPlayingTrack] = useState();
+
 
     const searchClickHandler = async (e) => {
         e.preventDefault();
@@ -24,28 +29,40 @@ const SearchTrack = () => {
         })
 
         setTracks(data.tracks.items)
-
         console.log(data);
     }
 
     const renderTracks = () => {
 
-        return tracks.map((track) => {
-        return <div key={track.id}>
-            {track.name}
-            </div>
-        })
+        const trackElements = tracks.map((track) => {
+
+            return <DisplayTracks track={track} chooseTrack={chooseTrack}/>
+            })
+
+        return (<div>
+            <h2>Search results:</h2>
+            {trackElements}
+        </div>)
     }
 
+    const chooseTrack = (track) => {
+        setPlayingTrack(track)
+        setSearchKey("");
+    }
+
+    console.log(playingTrack);
   return (
     <div>
+
         <form onSubmit={searchClickHandler}>
-        <input type="text" onChange={e => setSearchKey(e.target.value)}/>
+        <input type="text" placeholder='Search for a track or artist' onChange={e => setSearchKey(e.target.value)}/>
         <button type='sumbit'>Search</button>
         </form>
 
-        {tracks.length > 0 && 
-        renderTracks()}
+        {tracks.length > 0 && renderTracks()}
+
+        <div className='player'><Player trackUri={playingTrack?.uri}/></div>
+
     </div>
   )
 }

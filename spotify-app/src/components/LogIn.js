@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
-import { useState, useEffect } from 'react'
-import axios from 'axios';
+import { useEffect } from 'react'
 import SpotifyAppContext from '../context/SpotifyAppContext';
 import SearchTrack from './SearchTrack';
 
@@ -29,7 +28,7 @@ const LogIn = () => {
       setToken(token)
 
   
-    }, [])
+    }, [setToken])
   
     const logoutHandler = () => {
         setToken("")
