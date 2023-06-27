@@ -48,7 +48,7 @@ const SearchTrack = () => {
     const chooseTrack = (track) => {
         setPlayingTrack(track)
         setSearchKey("");
-        //console.log(track);
+        console.log(track);
     }
 
     //console.log("token", token);
@@ -63,9 +63,9 @@ const SearchTrack = () => {
 
         {tracks.length > 0 && renderTracks()}
 
-        <div className='player'>
-            <Player trackUri={playingTrack?.uri}/>
-        </div>
+        {playingTrack &&
+        <Player id={playingTrack?.id}/>}
+
 
     </div>
   )

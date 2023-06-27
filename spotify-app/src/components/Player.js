@@ -1,22 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
-import SpotifyPlayer from "react-spotify-web-playback"
-import SpotifyAppContext from '../context/SpotifyAppContext'
+import React, { useEffect, useState } from 'react'
 
-const Player = ({trackUri}) => {
-
-    const {token} = useContext(SpotifyAppContext)
+const Player = ({id}) => {
 
     const [play, setPlay] = useState(false)
 
-    useEffect(() => setPlay(true), [trackUri])
+    useEffect(() => setPlay(true), [id])
 
-    //console.log(trackUri);
-
-    return <SpotifyPlayer token={token}   play={play} uris={trackUri ? [trackUri] : []}
-    callback={state => {
-        if (!state.isPlaying) setPlay(false)
-      }}
-    />
+    return <iframe title='Player' 
+    style={{borderRadius: "12px"}}
+    src={`https://open.spotify.com/embed/track/${id}`}
+    width="100%" 
+    height="352"
+    allowfullscreen="" 
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+    loading="lazy"
+    ></iframe>
 
 }
 

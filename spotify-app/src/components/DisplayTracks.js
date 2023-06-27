@@ -6,6 +6,7 @@ const DisplayTracks = ({track, chooseTrack}) => {
         chooseTrack(track)
     }
 
+    
   return (
         <div> 
             <img src={track.album.images[1].url} alt="Album Cover" style={{height: "70px", width: "70px"}}></img>
