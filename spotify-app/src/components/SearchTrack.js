@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import axios from 'axios';
 import Player from './Player';
 import DisplayTracks from './DisplayTracks';
-
+import SearchIcon from '@mui/icons-material/Search';
 
 const SearchTrack = () => {
 
@@ -20,24 +20,23 @@ const SearchTrack = () => {
 
         const {data} = await axios.get("https://api.spotify.com/v1/search", {
             headers: {
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${token}`,
             },
             params: {
                 q: searchKey,
-                type: "track"
+                type: "track",
             }
         })
 
-        setTracks(data.tracks.items)
-        //console.log(data);
+        setTracks(data.tracks.items);
     }
+
 
     const renderTracks = () => {
 
         const trackElements = tracks.map((track) => {
-
             return <DisplayTracks key={track.id} track={track} chooseTrack={chooseTrack}/>
-            })
+        })
 
         return (<div>
             <h2>Search results:</h2>
@@ -46,19 +45,17 @@ const SearchTrack = () => {
     }
 
     const chooseTrack = (track) => {
-        setPlayingTrack(track)
+        setPlayingTrack(track);
         setSearchKey("");
-        console.log(track);
     }
 
-    //console.log("token", token);
 
   return (
     <div>
 
         <form onSubmit={searchClickHandler}>
-        <input type="text" placeholder='Search for a track or artist' onChange={e => setSearchKey(e.target.value)}/>
-        <button type='sumbit'>Search</button>
+        <input className='search-input' type="text" placeholder='Search for a track or artist' onChange={e => setSearchKey(e.target.value)}/>
+        <button className='search-btn' type='sumbit'> <SearchIcon fontSize='large'/> </button>
         </form>
 
         {tracks.length > 0 && renderTracks()}

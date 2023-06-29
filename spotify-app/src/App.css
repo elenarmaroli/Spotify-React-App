@@ -1,38 +1,82 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+body {
+  height: 100vh;
+  margin: 20px;
+  background: rgb(243,54,148);
+  background: linear-gradient(141deg, rgba(243,54,148,1) 0%, rgba(95,0,249,1) 100%);
+  font-family: 'Raleway', sans-serif;
+  color: #1c0e42;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.header h1 {
+  font-size: 80px;
+  margin-top: 70px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.fa-spotify {
+  margin-left: 30px;
+  color: #1ed760;
+}
+
+.login-btn {
+  border-radius: 12px;
+  padding: 20px;
+  text-decoration: none;
+  background-color: #bf5de6;
+  color: #1c0e42;
+}
+
+.login-btn:hover, .logout-btn:hover {
+  font-weight: 600;
+  border: 1px solid #1c0e42;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logout-btn {
+  width: 150px;
+  font-family: 'Raleway', sans-serif;
+  margin-top: 50px;
+  border-radius: 12px;
+  padding: 10px;
+  text-decoration: none;
+  background-color: #bf5de6;
+  color: #1c0e42;
+  border: 0px;
+}
+
+.search-input {
+  font-family: 'Raleway', sans-serif;
+  height: 30px;
+  margin-right: 10px;
+  border-radius: 12px;
+  padding: 10px;
+  background-color: #f7a6f4;
+  border: 0px;
+  color: #1c0e42;
+}
+
+.search-btn {
+  background-color: #1c0e4200;
+  color: #f7a6f4;
+  vertical-align: middle;
+  height: 50px;
+  border: 0px;
+  border-radius: 12px;
+  border: 2px solid #f7a6f4;
+}
+
+.search-btn:hover {
+  cursor: pointer;
 }

@@ -3,7 +3,7 @@ import React from 'react'
 const DisplayTracks = ({track, chooseTrack}) => {
     
     const handlePlay = () => {
-        chooseTrack(track)
+        chooseTrack(track);
     }
 
     

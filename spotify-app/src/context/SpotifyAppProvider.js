@@ -9,9 +9,11 @@ const SpotifyAppProvider = ({ children }) => {
     
 
   return (
+
     <SpotifyAppContext.Provider value={{token, setToken, searchKey, setSearchKey}}>
       {children}
     </SpotifyAppContext.Provider>
+    
   );
 };
 
