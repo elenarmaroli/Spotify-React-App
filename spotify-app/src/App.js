@@ -1,5 +1,6 @@
 import './App.css';
 import LogIn from './components/LogIn';
+import '@fontsource/raleway';
 
 function App() {
 
